@@ -20,11 +20,29 @@ function baiTinhCanChi(nam) {
 baiTinhCanChi(2020);
 baiTinhCanChi(2021);
 
-function inRaThuTrongTuan(day, month, year) {
-    const thu = ['Chủ nhật', 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy'];
-    const date = new Date(year, month - 1, day); 
-    return thu[date.getDay()];
+function inRaThuTrongTuan(ngay, thang, nam) {
+   
+    const date = new Date(nam, thang - 1, ngay);
+
+
+    if (
+        date.getFullYear() !== nam ||
+        date.getMonth() !== thang - 1 ||
+        date.getDate() !== ngay
+    ) {
+        return "Ngày không hợp lệ.";
+    }
+
+ 
+    const thu = ["Chủ nhật", "Thứ hai", "Thứ ba", "Thứ tư", "Thứ năm", "Thứ sáu", "Thứ bảy"];
+
+    return `Ngày ${ngay}/${thang}/${nam} là ${thu[date.getDay()]}.`;
 }
+
+
+console.log(inRaThuTrongTuan(5, 8, 2025)); 
+console.log(inRaThuTrongTuan(29, 2, 2025)); 
+
 
 // Ví dụ:// → Thứ Ba
 console.log(inRaThuTrongTuan(1, 1, 2023)); 
